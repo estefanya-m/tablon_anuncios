@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Últimos anuncios</h2>
+<div class="row">
+    {% for a in anuncios %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <span class="badge bg-info">{{ a.categoria.nombre }}</span>
+                <h5 class="card-title mt-2">{{ a.titulo }}</h5>
+                <p class="card-text">{{ a.contenido }}</p>
+            </div>
+            <div class="card-footer text-muted small">
+                Por {{ a.autor.nombre }} - {{ a.fecha_publicacion.strftime('%d/%m/%Y %H:%M') }}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No hay anuncios publicados.</p>
+    {% endfor %}
+</div>
+{% endblock %}
